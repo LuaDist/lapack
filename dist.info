@@ -1,0 +1,10 @@
+--- This file is part of LuaDist project
+
+name = "lapack"
+version = "3.4.1"
+
+desc = "LAPACK is a library of Fortran 90 with subroutines for solving the most commonly occurring problems in numerical linear algebra. It is freely-available software, and is copyrighted."
+author = "Multiple"
+license = "BSD-like"
+url = "http://www.netlib.org/lapack/"
+maintainer = "Peter Drahoš"
