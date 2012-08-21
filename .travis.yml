@@ -2,13 +2,13 @@
 # LuaDist Travis-CI Hook
 #
 
-# We assume Fortran build environments
-language: Fortran
+# We assume C build environments
+language: C
 	
 # Try using multiple Lua Implementations
 env:
-  - TOOL=""                     # Use native compiler (GCC usually)
-
+  - COMPILER="fortran"          # Use fortran, make sure to modify the matrix section
+  
 # Install dependencies
 install:
   - git clone git://github.com/LuaDist/_util.git ~/_util
