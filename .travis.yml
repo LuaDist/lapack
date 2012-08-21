@@ -7,7 +7,7 @@ language: C
 	
 # Try using multiple Lua Implementations
 env:
-  - COMPILER="fortran"          # Use fortran, make sure to modify the matrix section
+  - TOOL="fortran"          # Use fortran, make sure to modify the matrix section
   
 # Install dependencies
 install:
