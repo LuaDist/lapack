@@ -57,7 +57,8 @@ else (USE_XBLAS)
 endif(USE_XBLAS)
 
 lapack_install_library(lapacke)
-INSTALL( FILES ${LAPACKE_INCLUDE} DESTINATION include )
+install_header ( ${LAPACKE_INCLUDE} )
+#INSTALL( FILES ${LAPACKE_INCLUDE} DESTINATION include )
 
 if(BUILD_TESTING)
    add_subdirectory(example)

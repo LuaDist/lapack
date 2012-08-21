@@ -8,8 +8,8 @@ add_subdirectory(MATGEN)
 add_subdirectory(LIN)
 add_subdirectory(EIG)
 macro(add_lapack_test output input target)
-  set(TEST_INPUT "${LAPACK_SOURCE_DIR}/TESTING/${input}")
-  set(TEST_OUTPUT "${LAPACK_BINARY_DIR}/TESTING/${output}")
+  set(TEST_INPUT "${CMAKE_CURRENT_SOURCE_DIR}/TESTING/${input}")
+  set(TEST_OUTPUT "${CMAKE_CURRENT_BINARY_DIR}/TESTING/${output}")
   get_target_property(TEST_LOC ${target} LOCATION)
   string(REPLACE "." "_" input_name ${input})
   set(testName "${target}_${input_name}")
@@ -19,7 +19,7 @@ macro(add_lapack_test output input target)
       -DINPUT=${TEST_INPUT} 
       -DOUTPUT=${TEST_OUTPUT} 
       -DINTDIR=${CMAKE_CFG_INTDIR}
-      -P "${LAPACK_SOURCE_DIR}/TESTING/runtest.cmake")
+      -P "${CMAKE_CURRENT_SOURCE_DIR}/TESTING/runtest.cmake")
   endif()
 endmacro(add_lapack_test)
 
@@ -309,9 +309,9 @@ endif()
 
 # ==============================================================================
 
-execute_process(COMMAND ${CMAKE_COMMAND} -E copy ${LAPACK_SOURCE_DIR}/lapack_testing.py ${LAPACK_BINARY_DIR})
+execute_process(COMMAND ${CMAKE_COMMAND} -E copy ${CMAKE_CURRENT_SOURCE_DIR}/lapack_testing.py ${CMAKE_CURRENT_BINARY_DIR})
  add_test(
   NAME LAPACK_Test_Summary
-  WORKING_DIRECTORY ${LAPACK_BINARY_DIR}
+  WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
   COMMAND ${PYTHON_EXECUTABLE} "lapack_testing.py"
  )

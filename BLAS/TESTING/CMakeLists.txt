@@ -28,7 +28,7 @@
 
 macro(add_blas_test name src)
   get_filename_component(baseNAME ${src} NAME_WE)
-  set(TEST_INPUT "${LAPACK_SOURCE_DIR}/BLAS/${baseNAME}.in")
+  set(TEST_INPUT "${CMAKE_CURRENT_SOURCE_DIR}/BLAS/${baseNAME}.in")
   add_executable(${name} ${src})
   get_target_property(TEST_LOC ${name} LOCATION)
   target_link_libraries(${name} blas)
@@ -37,12 +37,12 @@ macro(add_blas_test name src)
       -DTEST=${TEST_LOC}
       -DINPUT=${TEST_INPUT}
       -DINTDIR=${CMAKE_CFG_INTDIR}
-      -P "${LAPACK_SOURCE_DIR}/TESTING/runtest.cmake")
+      -P "${CMAKE_CURRENT_SOURCE_DIR}/TESTING/runtest.cmake")
     else()
       add_test(BLAS-${name} "${CMAKE_COMMAND}" 
         -DTEST=${TEST_LOC}
         -DINTDIR=${CMAKE_CFG_INTDIR}
-        -P "${LAPACK_SOURCE_DIR}/TESTING/runtest.cmake")
+        -P "${CMAKE_CURRENT_SOURCE_DIR}/TESTING/runtest.cmake")
     endif()
 endmacro(add_blas_test)
 
